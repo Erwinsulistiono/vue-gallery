@@ -147,7 +147,7 @@ export default {
         border-width: 1px;
         border-color: #7b7b7b6e;
         border-radius: 5px;
-        box-shadow: 1px 1px #7b7b7b;
+        box-shadow: 1px 4px 12px 0px #7b7b7b8a;
         padding: 0;
         display: flex;
         justify-content: space-between;
