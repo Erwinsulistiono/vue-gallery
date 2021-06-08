@@ -20,8 +20,13 @@
                         <button type="button" class="page-link" v-if="page != 1" @click="page--"> Previous </button>
                     </li>
                     ...
-                    <li class="page-item">
+                    <li class="page-item hidden-desktop">
                         <template v-for="pageNumber in pages.slice(page-1, page+5)" :key="pageNumber">
+                            <button type="button" class="page-link" :class="{active:pageNumber === page}" @click="page = pageNumber"> {{pageNumber}} </button>
+                        </template>
+                    </li>
+                    <li class="page-item hidden-mobile">
+                        <template v-for="pageNumber in pages.slice(page-1, page+2)" :key="pageNumber">
                             <button type="button" class="page-link" :class="{active:pageNumber === page}" @click="page = pageNumber"> {{pageNumber}} </button>
                         </template>
                     </li>...
@@ -198,5 +203,23 @@ export default {
         width: 100vw;
         height: 100vh;
         background-color:#72707062
+    }
+
+    .hidden-mobile {
+        display: none !important;     
+    }
+
+    .hidden-desktop {
+        display: inline-block !important;
+    }
+
+    @media screen and (max-width: 600px) {
+        .hidden-mobile {
+            display: inline-block !important;
+        }
+        
+        .hidden-desktop {
+            display: none !important;
+        }
     }
 </style>
