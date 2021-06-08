@@ -82,15 +82,18 @@ export default {
             this.galleries.push(data[i])
         }
 
-        const token = localStorage.getItem("token")
-        if (token) {
+        const userData = JSON.parse(localStorage.getItem("token"))
+        if (userData) {
+            this.$emit('logedin');
             response = await fetch("https://express-api-bumiai.herokuapp.com/api/users/", {
                 headers: {
-                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")).token
+                    Authorization: "Bearer " + userData.token
                 }
             });
             data = await response.json();
             if (data.success) this.isLoggedIn = true;
+        } else {
+            this.$emit('logedout');
         }
         this.loading = false;
     },
@@ -211,6 +214,12 @@ export default {
 
     .hidden-desktop {
         display: inline-block !important;
+    }
+
+    nav {
+        background-color: #41b883;
+        width: 100%; 
+        margin-bottom: 50px;
     }
 
     @media screen and (max-width: 600px) {

@@ -11,7 +11,7 @@ export default {
     },
     mounted() {
         localStorage.removeItem("token")
-        this.$emit('logedin');
+        this.$emit('logedout');
         this.$router.push('/login');
     }
 }

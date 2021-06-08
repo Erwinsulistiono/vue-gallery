@@ -21,7 +21,7 @@
       </template>
     </template>
   </NavBar>
-  <router-view @logedin="toggleLogin"/>
+  <router-view @logedout="isLoggedIn = false" @logedin="isLoggedIn = true"/>
 </template>
 
 <script>
@@ -36,8 +36,11 @@ export default {
     }
   },
   methods: {
-    toggleLogin() {
-      this.isLoggedIn = !this.isLoggedIn;
+    loggedOut() {
+      this.isLoggedIn = false;
+    },
+    loggedIn() {
+      this.isLoggedIn = true;
     }
   }
 }

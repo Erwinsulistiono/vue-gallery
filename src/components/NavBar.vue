@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav id="main-nav">
         <div class="navbar">
             <div>
                 <slot name='home'></slot>
@@ -12,10 +12,13 @@
 </template>
 
 <style>
-    nav {
+    #main-nav {
         background-color: #41b883;
         width: 100%; 
         margin-bottom: 50px;
+        box-shadow: 0 -3px 12px #3f3f3fc2;
+        position: sticky;
+        top: 0;
     }
 
     .navbar {
